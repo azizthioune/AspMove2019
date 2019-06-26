@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Formulaire d'Inscription</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="login-content">
+
+  
+
+    <!-- Login form -->
+    <form class="list-form">
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Prenom
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="prenom" name="prenom" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>
+            <ion-icon name="person" item-start class="text-primary"></ion-icon>
+            Nom
+          </ion-label>
+          <ion-input type="text" [(ngModel)]="nom" name="nom" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="barcode" item-start class="text-primary"></ion-icon>
+            Numéro Carte D'identité
+          </ion-label>
+          <ion-input type="number" [(ngModel)]="cin" name="cin" ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>
+            <ion-icon name="logo-reddit" item-start class="text-primary"></ion-icon>
+            Date de Naissance
+          </ion-label>
+          <ion-datetime [(ngModel)]="birth" name="birth" display-format="DD-MM-YYYY	"></ion-datetime>
+        </ion-item>
+      
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>
+            <ion-icon name="call" item-start class="text-primary"></ion-icon>
+            Telephone
+          </ion-label>
+          <ion-input type="number" [(ngModel)]="telephone" name="telephone"></ion-input>
+        </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Mot de passe
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Confirmer le mot de passe
+        </ion-label>
+        <ion-input type="password" [(ngModel)]="cpassword" name="cpassword"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Genre</ion-label>
+          <ion-select>
+            <ion-option value="Homme">Homme</ion-option>
+            <ion-option value="Femme">Femme</ion-option>
+          </ion-select>
+      </ion-item> 
+    </form>
+<br>
+<br>
+    <div margin-top>
+      <button ion-button block color="dark" tappable (click)="doSignup()">
+        S'inscrire
+      </button>
+
+      
+    </div>
+
+   
+
+  </div>
+</ion-content>

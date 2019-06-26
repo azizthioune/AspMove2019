@@ -1,0 +1,89 @@
+<ion-header>
+  
+ 
+ </ion-header>
+ 
+ 
+ 
+ 
+ 
+ <ion-content fullscreen class="animated fadeIn login auth-page">
+     <div class="login-content">
+   
+       <!-- Logo -->
+       <div padding-horizontal text-center class="animated fadeInDown">
+         <div class="logo"></div>
+         <h2 ion-text class="text-primary">
+           <strong>AspMove</strong> Covoiturage
+         </h2>
+       </div>
+   
+       <!-- Login form -->
+       <form class="list-form">
+         <ion-item>
+           <ion-label floating>
+             <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+             Email
+           </ion-label>
+           <ion-input type="email" [(ngModel)]="email" name="email" required="required"></ion-input>
+         </ion-item>
+   
+         <ion-item>
+           <ion-label floating>
+             <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+             Password
+           </ion-label>
+           <ion-input type="password" [(ngModel)]="password" name="password" required="required"></ion-input>
+         </ion-item>
+       </form>
+   
+       <p text-right ion-text color="secondary" tappable ><strong>Forgot Password?</strong></p>
+   
+       <div>
+           <button *ngIf="email && password" ion-button icon-start block color="dark" tappable (click)="submitLogin()">
+               <ion-icon name="log-in"></ion-icon>
+               SIGN IN
+             </button>
+           <!--show dead button if form is not filled
+                <button *ngIf="!email && !password" ion-button color="danger" clear round>Login Now</button>  
+   
+ -->
+              
+ 
+         <p text-center ion-text color="secondary">Or Sign in with:</p>
+   
+         <ion-grid>
+           <ion-row>
+             <ion-col col-4>
+               <button ion-button icon-only block class="btn-facebook">
+                 <ion-icon name="logo-facebook"></ion-icon>
+               </button>
+             </ion-col>
+             <ion-col col-4>
+               <button ion-button icon-only block class="btn-twitter">
+                 <ion-icon name="logo-twitter"></ion-icon>
+               </button>
+             </ion-col>
+             <ion-col col-4>
+               <button ion-button icon-only block class="btn-gplus">
+                 <ion-icon name="logo-googleplus"></ion-icon>
+               </button>
+             </ion-col>
+           </ion-row>
+         </ion-grid>
+   
+       </div>
+   
+   
+       <!-- Other links -->
+       <div text-center margin-top>
+        <button ion-button color="gray" block clear (click)="redirectToSignup()">Nouveau Compte</button>
+       </div>
+   
+     </div>
+   </ion-content>
+ 
+ 
+ 
+ 
+ 

@@ -1,14 +1,72 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-      Ionic Blank
+     ASPmove
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-card no-margin margin-bottom class="full-width">
+        <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
+          <ion-icon name="search" color="primary" item-left></ion-icon>
+          <span></span>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
+          <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" ></ion-datetime>
+        </ion-item>
+      </ion-card>
+    
+      <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
+        <ion-icon name="search"></ion-icon> Search
+      </button>
+<br>
+<br>
+
+      <div class="trip-info card round">
+          <div class="trip-image border-bottom" ></div>
+          <ion-grid padding>
+            <ion-row>
+              <ion-col width-66>
+                <h5 ion-text color="primary">test</h5>
+                <div>
+                  <span class="bold">test</span>
+                  <br/>
+                  <span ion-text color="dark">test</span>
+                </div>
+                <div margin-top>
+                  <span ion-text color="dark"></span>
+                  <br/>
+                  <span ion-text></span>
+                </div>
+                <div margin-top>
+                  <ion-icon name="checkmark" class="text-green" ></ion-icon>
+                  <span ion-text >Free cancellation</span>
+                </div>
+              </ion-col>
+              <ion-col col-4>
+                <span ion-text>Total with Tax</span>
+                <h5 ion-text color="primary" class="bold" no-margin></h5>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+
+
 </ion-content>
+<ion-footer>
+  <ion-row>
+      <ion-col offset-3 col-10>
+        <button ion-button round large (click)="ajoutTrajet()">
+          <ion-icon name="add-circle"></ion-icon>&nbsp;
+          Proposer un Trajet
+        </button>
+      </ion-col>
+  </ion-row>
+</ion-footer>  
