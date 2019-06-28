@@ -1,17 +1,34 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { MonTrajet } from '../../model/addtrajet/MonTrajet.model';
 
-/*
-  Generated class for the AddtrajetserviceProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
+
 @Injectable()
 export class AddtrajetserviceProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello AddtrajetserviceProvider Provider');
+  private addTrajetRef = this.db.list<MonTrajet>('add-Trajet');
+
+  constructor(private db: AngularFireDatabase) {
+    
   }
+
+
+  getAddTrajet() {
+    return this.addTrajetRef;
+}
+
+addTrajet(montrajet: MonTrajet) {
+    return this.addTrajetRef.push(montrajet);
+}
+
+updateNote(montrajet: MonTrajet) {
+    return this.addTrajetRef.update(montrajet.key, montrajet);
+}
+
+removeNote(montrajet: MonTrajet) {
+    return this.addTrajetRef.remove(montrajet.key);
+}
 
 }

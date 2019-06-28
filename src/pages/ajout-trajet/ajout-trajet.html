@@ -1,15 +1,124 @@
-<!--
-  Generated template for the AjoutTrajetPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
     <ion-title>ajout-trajet</ion-title>
   </ion-navbar>
+  <!-- Logo -->
+ 
 </ion-header>
 
-<ion-content padding>
+<ion-content fulscreen>
 
-</ion-content>
+    <div padding-horizontal text-center class="animated fadeInDown">
+        <div class="logo"></div>
+        <h2 ion-text class="text-primary">
+          <strong>AspMove</strong> Covoiturage
+        </h2>
+      </div>
+    <div>
+      <button (click)="toggleFunc();" class="accordion">Informations de la Voiture</button>
+      <div class="panel" [ngClass]="opened ? 'active' : ''">
+        <form >
+            <ion-item>
+                <ion-label floating>
+                  <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                  Matricule Voiture
+                </ion-label>
+                <ion-input  type="text" [(ngModel)]="monTrajet.matricule" name="matricule"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label floating>
+                  <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                 Marque Voiture
+                </ion-label>
+                <ion-input  type="text" [(ngModel)]="monTrajet.marque_voiture" name="marque_voiture"></ion-input>
+              </ion-item>
+        
+              <ion-item>
+                  <ion-label floating>
+                    <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                  Type Voiture
+                  </ion-label>
+                  <ion-input type="text"  [(ngModel)]="monTrajet.type_voiture" name="type_voiture"></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label floating>
+                      <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                    Model Voiture
+                    </ion-label>
+                    <ion-input  type="text" [(ngModel)]="monTrajet.model_voiture" name="model_voiture"></ion-input>
+                  </ion-item>
+
+        
+        </form>
+      </div>
+    </div>
+<br>
+
+    <div>
+        <button (click)="toggleFunc();" class="accordion">Informations sur le trajet</button>
+        <div class="panel" [ngClass]="opened ? 'active' : ''">
+          <form  >
+              <ion-item>
+                  <ion-label floating>
+                    <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                    Ville de Départ
+                  </ion-label>
+                  <ion-input  type="text" [(ngModel)]="monTrajet.villeD" name="villeD" ></ion-input>
+                </ion-item>
+          
+                <ion-item>
+                    <ion-label floating>
+                      <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                   Quartier de Départ
+                    </ion-label>
+                    <ion-input  type="text" [(ngModel)]="monTrajet.quartierD" name="quartierD" ></ion-input>
+                  </ion-item>
+  
+                  <ion-item>
+                      <ion-label floating>
+                        <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                      Ville d'arrivée
+                      </ion-label>
+                      <ion-input  type="text" [(ngModel)]="monTrajet.villeA" name="villeA" ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label floating>
+                          <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                       Quartier d'arrivée
+                        </ion-label>
+                        <ion-input  type="text" [(ngModel)]="monTrajet.quartierA" name="quartierA" ></ion-input>
+                      </ion-item>
+
+                      <ion-item>
+                          <ion-label floating>
+                            <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                        Date de Départ
+                          </ion-label>
+                          <ion-input  type="date" [(ngModel)]="monTrajet.dateD" name="dateD" ></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label floating>
+                              <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                          Heure de Départ
+                            </ion-label>
+                            <ion-input  type="datetime-local" [(ngModel)]="monTrajet.heureD" name="heureD" ></ion-input>
+                          </ion-item>  
+
+                          <ion-item>
+                            <ion-label floating>
+                              <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                          Nombre de Place
+                            </ion-label>
+                            <ion-input  type="number" [(ngModel)]="monTrajet.nbplace" name="nbplace" ></ion-input>
+                          </ion-item>  
+                          <button ion-button block clear (click)="addTrajet(note)">Valider</button>
+          </form>
+        </div>
+        
+      </div>
+  </ion-content>
