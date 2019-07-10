@@ -1,9 +1,9 @@
 export const FIREBASE_CONFIG = {
-apiKey: "AIzaSyClhqiVj3xRdZRj8E4gys0mIk3UHGQwXWg",
-authDomain: "aspmove2019.firebaseapp.com",
-databaseURL: "https://aspmove2019.firebaseio.com",
-projectId: "aspmove2019",
-storageBucket: "",
-messagingSenderId: "359635937796",
-appId: "1:359635937796:web:a1b46e904bc4b0ec"
-};
+    apiKey: "AIzaSyBt8PERx1cU9qHbEs1IGgbqNA4rYYsAhlc",
+    authDomain: "aspmove2019-1705d.firebaseapp.com",
+    databaseURL: "https://aspmove2019-1705d.firebaseio.com",
+    projectId: "aspmove2019-1705d",
+    storageBucket: "aspmove2019-1705d.appspot.com",
+    messagingSenderId: "614702722820",
+    appId: "1:614702722820:web:c4b6395c76b06daf"
+  };

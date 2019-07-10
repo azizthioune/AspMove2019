@@ -5,68 +5,101 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="ajout()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-     ASPmove
+     ASPmove Covoiturage
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-card no-margin margin-bottom class="full-width">
-        <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
+<ion-content padding class="checkout-trip common-bg">
+    <ion-card no-margin margin-bottom class="full-width" >
+       <!-- <ion-item tappable (click)="choosePlace('from')" class="border-bottom">
           <ion-icon name="search" color="primary" item-left></ion-icon>
           <span></span>
-        </ion-item>
+        </ion-item>  -->
         <ion-item>
-          <ion-icon name="md-calendar" color="primary" item-left></ion-icon>
-          <ion-datetime class="no-pl" displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" ></ion-datetime>
+          <ion-searchbar showCancelButton="always" animated placeholder="Chercher une Ville ou Quartier de Départ..." [(ngModel)]="terms"></ion-searchbar>
         </ion-item>
       </ion-card>
-    
-      <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="doSearch()">
-        <ion-icon name="search"></ion-icon> Search
-      </button>
-<br>
-<br>
 
-      <div class="trip-info card round">
-          <div class="trip-image border-bottom" ></div>
-          <ion-grid padding>
-            <ion-row>
-              <ion-col width-66>
-                <h5 ion-text color="primary">test</h5>
-                <div>
-                  <span class="bold">test</span>
-                  <br/>
-                  <span ion-text color="dark">test</span>
-                </div>
-                <div margin-top>
-                  <span ion-text color="dark"></span>
-                  <br/>
-                  <span ion-text></span>
-                </div>
-                <div margin-top>
-                  <ion-icon name="checkmark" class="text-green" ></ion-icon>
-                  <span ion-text >Free cancellation</span>
-                </div>
-              </ion-col>
-              <ion-col col-4>
-                <span ion-text>Total with Tax</span>
-                <h5 ion-text color="primary" class="bold" no-margin></h5>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+      <button  ion-button icon-start block no-margin color="primary" class="round" tappable (click)="sort()">
+        <ion-icon name="search"></ion-icon> Chercher
+      </button>
+      <br/>
+      <br/>
+      <br/>
+  <div class="mycard" *ngFor="let trajet of trajetList | async | search : terms | sort: {property: column, order: order}" (click)="details()">
+ 
+  <div class="trip-image border-bottom"></div>
+  
+  <ion-grid padding>
+    <ion-row>
+      <ion-col width-70 >
+        <h5 ion-text color="primary">{{ trajet.prenom }} {{ trajet.nom }}</h5>
+        <br>
+        <h1 ion-text color="secondary" >{{ trajet.villeD }} | </h1>
+        <h1 ion-text color="secondary" >{{ trajet.quartierD }} </h1>
+      </ion-col>
+      
+      <ion-col col-3>
+        <div margin-top>
+          <span ion-text >{{ trajet.date | date: 'EEE, MMM dd' }}</span>
+          
         </div>
+        <div margin-top>
+            <br>
+            <br>
+            <br>
+            
+           
+            <ion-icon class="size" name="arrow-round-forward"></ion-icon>
+        </div>
+        <div margin-top>
+          <span ion-text color="dark">{{ trajet.date | date: 'EEE, MMM dd' }}</span>
+          
+        </div>
+      </ion-col>
+     
+      <ion-col col-4>
+        <span ion-text class="bold">2000 FCFA</span>
+        <br>
+        <br>
+        <br>
+        <h1 ion-text color="secondary">{{ trajet.villeA }} | </h1>
+        <h1 ion-text color="secondary"> {{ trajet.quartierA }} </h1>
+      </ion-col>
+      <ion-col col-4>
+          <span ion-text class="bold">Nombre de Place: 3</span>
+          
+        </ion-col>
+        <ion-col  col-4 item-right>
+            <span ion-text class="bold"></span>
+          </ion-col>
+          <ion-col  col-4 item-right>
+              <p ion-text class=""> {{ trajet.dateD | date: ' EEE, dd MMM ' }}</p>
+            </ion-col>
+      
+    </ion-row>
+    
+  </ion-grid>
+</div>
+
 
 
 </ion-content>
-<ion-footer>
+<!--
+<ion-footer >
   <ion-row>
       <ion-col offset-3 col-10>
-        <button ion-button round large (click)="addTrajet()">
+        <button ion-button round large (click)="ajout()">
           <ion-icon name="add-circle"></ion-icon>&nbsp;
           Proposer un Trajet
         </button>
       </ion-col>
   </ion-row>
-</ion-footer>  
+</ion-footer>  -->

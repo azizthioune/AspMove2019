@@ -2,7 +2,12 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from "../home/home";
 import { LoginPage } from "../login/login";
-import { AjoutTrajetPage } from "../ajout-trajet/ajout-trajet";
+import { ProfilPage } from "../profil/profil";
+import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
+import 'rxjs/Rx';
+import { Observable } from "rxjs/Observable";
+import { SignupPage } from "../signup/signup";
+
 
 /**
  * Generated class for the MenuPage page.
@@ -18,14 +23,26 @@ import { AjoutTrajetPage } from "../ajout-trajet/ajout-trajet";
 })
 export class MenuPage {
   rootPage : any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userProfilList: Observable<Account[]>
+  constructor(public navCtrl: NavController, public navParams: NavParams,private usersserviceProvider:UsersserviceProvider) {
     this.rootPage = HomePage;
-
+    
+    this.userProfilList = this.usersserviceProvider.getAccount()
+    .snapshotChanges()
+    .map(
+    changes => {
+      return changes.map(c => ({
+        key: c.payload.key, ...c.payload.val()
+      }))
+    });
   }
 
   logOut(){
     this.navCtrl.setRoot(LoginPage);
+  }  
+
+  profil(){
+    this.navCtrl.push(ProfilPage);
   }  
 
  

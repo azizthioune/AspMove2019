@@ -1,13 +1,17 @@
 
 <ion-header>
-  <ion-navbar>
-    <ion-title>ajout-trajet</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Proposer un Trajet</ion-title>
   </ion-navbar>
   <!-- Logo -->
  
 </ion-header>
 
 <ion-content fulscreen>
+
+  <form name="myForm">
+
+  
 
     <div padding-horizontal text-center class="animated fadeInDown">
         <div class="logo"></div>
@@ -18,13 +22,13 @@
     <div>
       <button (click)="toggleFunc();" class="accordion">Informations de la Voiture</button>
       <div class="panel" [ngClass]="opened ? 'active' : ''">
-        <form >
+      <p ion-text color="danger">*Remplir tous les champs pour valider</p>
             <ion-item>
                 <ion-label floating>
                   <ion-icon name="car" item-start class="text-primary"></ion-icon>
                   Matricule Voiture
                 </ion-label>
-                <ion-input  type="text" [(ngModel)]="monTrajet.matricule" name="matricule"></ion-input>
+                <ion-input  type="number" [(ngModel)]="trajet.matricule" name="matricule" required="required" ></ion-input>
               </ion-item>
 
               <ion-item>
@@ -32,7 +36,7 @@
                   <ion-icon name="car" item-start class="text-primary"></ion-icon>
                  Marque Voiture
                 </ion-label>
-                <ion-input  type="text" [(ngModel)]="monTrajet.marque_voiture" name="marque_voiture"></ion-input>
+                <ion-input  type="text" [(ngModel)]="trajet.marque_voiture" name="marque_voiture" required="required"></ion-input>
               </ion-item>
         
               <ion-item>
@@ -40,85 +44,133 @@
                     <ion-icon name="car" item-start class="text-primary"></ion-icon>
                   Type Voiture
                   </ion-label>
-                  <ion-input type="text"  [(ngModel)]="monTrajet.type_voiture" name="type_voiture"></ion-input>
+                  <ion-select [(ngModel)]="trajet.type_voiture" name="type_voiture" required="required">
+                    <ion-option value="Berline">Berline</ion-option>
+                    <ion-option value="Familiale">Familiale</ion-option>
+                    <ion-option value="pickUp">pickUp</ion-option>
+                    <ion-option value="4x4">4x4</ion-option>
+                  </ion-select>
                 </ion-item>
-
-                <ion-item>
-                    <ion-label floating>
-                      <ion-icon name="car" item-start class="text-primary"></ion-icon>
-                    Model Voiture
-                    </ion-label>
-                    <ion-input  type="text" [(ngModel)]="monTrajet.model_voiture" name="model_voiture"></ion-input>
-                  </ion-item>
-
-        
-        </form>
       </div>
     </div>
+<br>
+
+<div>
+  <button (click)="toggleFunc();" class="accordion">Informations sur le conducteur</button>
+  <div class="panel" [ngClass]="opened ? 'active' : ''">
+    
+        <ion-item>
+            <ion-label floating>
+              <ion-icon name="person" item-start class="text-primary"></ion-icon>
+              Prenom
+            </ion-label>
+            <ion-input  type="text" required [(ngModel)]="trajet.prenom" name="prenom"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label floating>
+              <ion-icon name="person" item-start class="text-primary" ></ion-icon>
+            Nom
+            </ion-label>
+            <ion-input  type="text" [(ngModel)]="trajet.nom" name="nom" ></ion-input>
+          </ion-item>
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon name="person" item-start class="text-primary"></ion-icon>
+             Numero de telephone
+              </ion-label>
+              <ion-input type="number"  [(ngModel)]="trajet.telephone" name="telephone"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon name="person" item-start class="text-primary"></ion-icon>
+             Numero Permis de conduire
+              </ion-label>
+              <ion-input type="number"  [(ngModel)]="trajet.num_permis" name="num_permis" ></ion-input>
+            </ion-item>
+
+  </div>
+</div>
 <br>
 
     <div>
         <button (click)="toggleFunc();" class="accordion">Informations sur le trajet</button>
         <div class="panel" [ngClass]="opened ? 'active' : ''">
-          <form  >
+         
               <ion-item>
                   <ion-label floating>
-                    <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                    <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
                     Ville de Départ
                   </ion-label>
-                  <ion-input  type="text" [(ngModel)]="monTrajet.villeD" name="villeD" ></ion-input>
+                  <ion-input  type="text" [(ngModel)]="trajet.villeD" name="villeD" ></ion-input>
                 </ion-item>
           
                 <ion-item>
                     <ion-label floating>
-                      <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                      <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
                    Quartier de Départ
                     </ion-label>
-                    <ion-input  type="text" [(ngModel)]="monTrajet.quartierD" name="quartierD" ></ion-input>
+                    <ion-input  type="text" [(ngModel)]="trajet.quartierD" name="quartierD" ></ion-input>
                   </ion-item>
   
                   <ion-item>
                       <ion-label floating>
-                        <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                        <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
                       Ville d'arrivée
                       </ion-label>
-                      <ion-input  type="text" [(ngModel)]="monTrajet.villeA" name="villeA" ></ion-input>
+                      <ion-input  type="text" [(ngModel)]="trajet.villeA" name="villeA" ></ion-input>
                     </ion-item>
 
                     <ion-item>
                         <ion-label floating>
-                          <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                          <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
                        Quartier d'arrivée
                         </ion-label>
-                        <ion-input  type="text" [(ngModel)]="monTrajet.quartierA" name="quartierA" ></ion-input>
+                        <ion-input  type="text" [(ngModel)]="trajet.quartierA" name="quartierA" ></ion-input>
                       </ion-item>
 
                       <ion-item>
                           <ion-label floating>
-                            <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                            <ion-icon name="clipboard" item-start class="text-primary" ></ion-icon>
                         Date de Départ
                           </ion-label>
-                          <ion-input  type="date" [(ngModel)]="monTrajet.dateD" name="dateD" ></ion-input>
+                          <ion-datetime pickerFormat="DD MMM YYYY" [(ngModel)]="trajet.dateD" name="dateD" ></ion-datetime>
                         </ion-item>
 
                         <ion-item>
                             <ion-label floating>
-                              <ion-icon name="car" item-start class="text-primary"></ion-icon>
+                              <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
                           Heure de Départ
                             </ion-label>
-                            <ion-input  type="datetime-local" [(ngModel)]="monTrajet.heureD" name="heureD" ></ion-input>
+                            <ion-datetime pickerFormat="HH:mm" [(ngModel)]="trajet.heureD" name="heureD" ></ion-datetime>
                           </ion-item>  
 
                           <ion-item>
                             <ion-label floating>
-                              <ion-icon name="car" item-start class="text-primary"></ion-icon>
-                          Nombre de Place
+                              <ion-icon name="clipboard" item-start class="text-primary"></ion-icon>
+                              Nombre de Place
                             </ion-label>
-                            <ion-input  type="number" [(ngModel)]="monTrajet.nbplace" name="nbplace" ></ion-input>
-                          </ion-item>  
-                          <button ion-button block clear (click)="addTrajet(note)">Valider</button>
-          </form>
+                            <ion-select [(ngModel)]="trajet.nbplace" name="nbplace" required="required">
+                              <ion-option value="1">1</ion-option>
+                              <ion-option value="2">2</ion-option>
+                              <ion-option value="3">3</ion-option>
+                              <ion-option value="4">4</ion-option>
+                              <ion-option value="5">5</ion-option>
+                              <ion-option value="6">6</ion-option>
+                              <ion-option value="7">7</ion-option>
+                              <ion-option value="8">8</ion-option>
+                            </ion-select>
+                          </ion-item>
+
+                          <div>
+                            <button  ion-button icon-start block class="login-button" color="dark" (click)="addTrajet(trajet)">Valider</button>
+                          </div>
+                          
+         
         </div>
         
       </div>
+    </form>
   </ion-content>

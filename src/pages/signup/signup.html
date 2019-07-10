@@ -27,13 +27,6 @@
           <ion-input type="text" [(ngModel)]="nom" name="nom" ></ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-label floating>
-            <ion-icon name="barcode" item-start class="text-primary"></ion-icon>
-            Numéro Carte D'identité
-          </ion-label>
-          <ion-input type="number" [(ngModel)]="cin" name="cin" ></ion-input>
-        </ion-item>
 
         <ion-item>
           <ion-label floating>
@@ -51,13 +44,6 @@
         <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
       </ion-item>
 
-      <ion-item>
-          <ion-label floating>
-            <ion-icon name="call" item-start class="text-primary"></ion-icon>
-            Telephone
-          </ion-label>
-          <ion-input type="number" [(ngModel)]="telephone" name="telephone"></ion-input>
-        </ion-item>
 
       <ion-item>
         <ion-label floating>
@@ -77,7 +63,7 @@
 
       <ion-item>
           <ion-label floating>Genre</ion-label>
-          <ion-select>
+          <ion-select [(ngModel)]="genre" name="genre">
             <ion-option value="Homme">Homme</ion-option>
             <ion-option value="Femme">Femme</ion-option>
           </ion-select>

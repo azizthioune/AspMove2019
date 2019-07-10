@@ -5,11 +5,84 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>profil</ion-title>
+  <ion-navbar color="primary">
+    <ion-title></ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+
+
+  <ion-toolbar class="user-profile" *ngFor="let users of userProfilList | async">
+    
+          <ion-grid>
+            <ion-row>
+              <ion-col col-5>
+                  <div class="user-avatar">
+                    <img src="../assets/img/avatar.jpeg">
+                  </div>
+              </ion-col>
+              <ion-col padding-top col-8>
+                <h2 ion-text class="no-margin bold text-white">
+                 {{users.prenom}} {{users.nom}}
+                </h2>
+                <span ion-text color="light">{{users.email}}</span>
+              </ion-col>
+            </ion-row>
+    
+            <ion-row no-padding class="other-data">
+              <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="" menuClose >
+                  <ion-icon name="contact"></ion-icon>
+                  Profil
+                </button>
+              </ion-col>
+              <ion-col no-padding class="column">
+                <button ion-button icon-left small full color="light" (click)="logOut()">
+                  <ion-icon name="log-out"></ion-icon>
+                  Deconnexion
+                </button>
+              </ion-col>
+            </ion-row>
+    
+          </ion-grid>
+         
+        </ion-toolbar>
+
+        <div class="card round" margin-top >
+          
+              <ion-list no-margin>
+                <ion-item class="primary-bg">
+                
+                  <h2 ion-text class="text-white bold" align="center">Modifier mon Compte</h2>
+                  <p ion-text class="text-secondary bold"></p>
+                </ion-item>
+              </ion-list>
+          
+              <div padding>
+             
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>Email:</ion-label>
+                  <ion-input type="text"  placeholder="entrez une nouvelle adresse mail"  [(ngModel)]="email"></ion-input>
+                </ion-item>
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>Mot de Passe Actuel:</ion-label>
+                  <ion-input type="password"  placeholder="entrez le mot de passe actuel" [(ngModel)]="cpassword"></ion-input>
+                </ion-item>
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>Nouveau Mot de Passe:</ion-label>
+                  <ion-input type="password"  placeholder="entrez le nouveau mot de passe" [(ngModel)]="password"></ion-input>
+                </ion-item>
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>Prenom:</ion-label>
+                  <ion-input  type="text" placeholder="prenom" [(ngModel)]="prenom"></ion-input>
+                </ion-item>
+                <ion-item no-padding>
+                  <ion-label color="dark" stacked>Nom:</ion-label>
+                  <ion-input  type="text" placeholder="nom" [(ngModel)]="nom"></ion-input>
+                </ion-item>
+                <button ion-button block clear (click)="updateProfil()">Save</button>
+              </div>
+            </div>
 
 </ion-content>
