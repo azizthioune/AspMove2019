@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Trajet } from '../../model/trajet/trajet.model';
+import { AddtrajetProvider } from '../../providers/addtrajetservice/addtrajet.service';
+import { Observable } from "rxjs/Observable";
 
 /**
  * Generated class for the DetailsTrajetPage page.
@@ -15,7 +18,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetailsTrajetPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  trajetList: Observable<Trajet[]>
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private addtrajetProvider: AddtrajetProvider) {
+
+    this.trajetList = this.addtrajetProvider.getTrajet()
+    .snapshotChanges()
+    .map(
+    changes => {
+      return changes.map(c => ({
+        key: c.payload.key, ...c.payload.val()
+      }))
+    });
+
   }
 
   ionViewDidLoad() {

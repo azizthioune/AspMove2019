@@ -1,5 +1,6 @@
 export interface Trajet {
-    key?: any;
+    trajetId?: any;
+    userId?: any;
     matricule: string;
     marque_voiture: string;
     type_voiture: string;
@@ -14,6 +15,7 @@ export interface Trajet {
     dateD: any;
     heureD: any;
     nbplace: any;
+    prixtrajet: any;
     createdAt?: string;
     timestamp: any;
 }

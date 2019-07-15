@@ -33,6 +33,7 @@ export class AjoutTrajetPage {
     dateD: new Date().toString() ,
     heureD: new Date().toString(),
     nbplace: '',
+    prixtrajet: '' ,
     timestamp: firebase.database.ServerValue.TIMESTAMP,
   };
  

@@ -8,6 +8,7 @@ import { Trajet } from '../../model/trajet/trajet.model';
 import { AddtrajetProvider } from '../../providers/addtrajetservice/addtrajet.service';
 import { Observable } from "rxjs/Observable";
 import { DetailsTrajetPage } from "../details-trajet/details-trajet";
+import { MenuPage } from "../menu/menu";
 
 
 
@@ -41,6 +42,10 @@ ionViewDidLoad() {
   ajout(){
     this.navCtrl.push(AjoutTrajetPage);
   }
+
+  acceuil(){
+    this.navCtrl.setRoot(MenuPage);
+  }  
 
   details(){
     this.navCtrl.push(DetailsTrajetPage);

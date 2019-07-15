@@ -1,7 +1,8 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import * as firebase from "firebase";
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/Auth';
 
 import 'firebase/storage';
 import { CameraOptions, Camera } from '@ionic-native/camera';
@@ -14,11 +15,12 @@ export class UsersserviceProvider {
   public userProfile: any;
 
   private userProfilListRef = this.db.list<Account>('userProfile');
-
+  userId: String;
   constructor(public http: Http, private db: AngularFireDatabase) {
-    this.fireAuth = firebase.auth().onAuthStateChanged;
+    this.fireAuth = firebase.auth();
     this.userProfile = firebase.database().ref('users');
   }
+
  
     
   loginUserService(email: string, password: string): any {
@@ -31,17 +33,19 @@ export class UsersserviceProvider {
             });
         }
 
+
+        getAccount() {
+           return  this.userProfilListRef;
+        }      
+  
+
       
 /*
         updateProfil(account: {}) {
           return this.userProfilListRef.update(account['users'], account);
       }
 */
-        getAccount() {
-        
-         return  this.userProfilListRef;
-      }      
-
+      
      
 
       

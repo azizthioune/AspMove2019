@@ -1,17 +1,17 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-buttons start>
+    <ion-buttons >
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
       <button ion-button (click)="ajout()">
-        <ion-icon name="add-circle-outline"></ion-icon>
+        <ion-icon name="add-circle"></ion-icon>
       </button>
     </ion-buttons>
     <ion-title>
-     ASPmove Covoiturage
+      <img src="../assets/img/ASPMOVE 2.png" (click)="acceuil()">
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -33,7 +33,7 @@
       <br/>
       <br/>
       <br/>
-  <div class="mycard" *ngFor="let trajet of trajetList | async | search : terms | sort: {property: column, order: order}" (click)="details()">
+  <div class="mycard" *ngFor="let trajet of trajetList | async | search : terms | sort: {property: column, order: order}" (click)="details(trajet.trajetId)">
  
   <div class="trip-image border-bottom"></div>
   
@@ -66,7 +66,7 @@
       </ion-col>
      
       <ion-col col-4>
-        <span ion-text class="bold">2000 FCFA</span>
+        <span ion-text class="bold">{{ trajet.prixtrajet }} FCFA</span>
         <br>
         <br>
         <br>
@@ -74,7 +74,7 @@
         <h1 ion-text color="secondary"> {{ trajet.quartierA }} </h1>
       </ion-col>
       <ion-col col-4>
-          <span ion-text class="bold">Nombre de Place: 3</span>
+          <span ion-text class="bold">Nombre de Place: {{ trajet.nbplace }}</span>
           
         </ion-col>
         <ion-col  col-4 item-right>

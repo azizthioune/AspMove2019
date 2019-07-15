@@ -19,7 +19,7 @@ import { DetailsTrajetPage } from "../pages/details-trajet/details-trajet";
 import { ProfilPage } from "../pages/profil/profil";
 
 import { FIREBASE_CONFIG } from './firebase.credentials';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/Auth';
 
 
@@ -32,6 +32,7 @@ import { SortPipe } from '../pipes/sort/sort';
 import { Camera } from "@ionic-native/camera";
 import { File } from "@ionic-native/file";
 import { FirebaseserviceProvider } from '../providers/firebaseservice/firebaseservice';
+import { AproposPage } from "../pages/apropos/apropos";
 
 
 
@@ -39,6 +40,7 @@ import { FirebaseserviceProvider } from '../providers/firebaseservice/firebasese
   declarations: [
     MyApp,
     HomePage,
+    AproposPage,
     LoginPage,
     SignupPage,
     MenuPage,
@@ -61,6 +63,7 @@ import { FirebaseserviceProvider } from '../providers/firebaseservice/firebasese
   entryComponents: [
     MyApp,
     HomePage,
+    AproposPage,
     LoginPage,
     SignupPage,
     MenuPage,

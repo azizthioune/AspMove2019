@@ -41,7 +41,7 @@ export class LoginPage {
     this.usersService.loginUserService(this.email, this.password).then(authData => {
       //successful
       loader.dismiss();
-      that.navCtrl.setRoot(MenuPage);
+      that.navCtrl.setRoot(HomePage);
 
     },error => {
       loader.dismiss();

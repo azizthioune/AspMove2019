@@ -30,6 +30,7 @@ export class ProfilPage {
         key: c.payload.key, ...c.payload.val()
       }))
     });
+
   }
 
   ionViewDidLoad() {

@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CameraOptions, Camera } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
 import { FirebaseserviceProvider } from '../../providers/firebaseservice/firebaseservice';
+import { MenuPage } from "../menu/menu";
 
 
 
@@ -19,7 +20,7 @@ import { FirebaseserviceProvider } from '../../providers/firebaseservice/firebas
 })
 export class SignupPage {
  
-  public key?: string;
+  public userId?: string;
   public prenom: any;
   public nom: any;
   public birth: any;
@@ -91,12 +92,6 @@ export class SignupPage {
     actionSheet.present();
   }
 
-   
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
-  }
-
   doSignup(){
     var account = {
       prenom: this.prenom,
@@ -120,7 +115,7 @@ var loader = this.loadingCtrl.create({
   	this.UsersserviceProvider.signupUserService(account).then(authData => {
   		//successful
   		loader.dismiss();
-  		that.navCtrl.setRoot(HomePage);
+  		that.navCtrl.setRoot(HomePage );
 
   	}, error => {
 loader.dismiss();

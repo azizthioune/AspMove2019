@@ -15,7 +15,7 @@ import { LoginPage } from "../pages/login/login";
 })
 export class MyApp {
  
-  rootPage:any = LoginPage;
+  rootPage:any;
 
 
 
@@ -24,7 +24,7 @@ export class MyApp {
     initializeApp(FIREBASE_CONFIG);
   
    
- var that = this;
+var that = this;
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {

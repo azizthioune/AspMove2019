@@ -164,8 +164,16 @@
                             </ion-select>
                           </ion-item>
 
+                          <ion-item>
+                            <ion-label floating>
+                              <ion-icon name="cash" item-start class="text-primary"></ion-icon>
+                           Prix Trajet par Personne
+                            </ion-label>
+                            <ion-input type="number"  [(ngModel)]="trajet.prixtrajet" name="prixtrajet" ></ion-input>
+                          </ion-item>
+
                           <div>
-                            <button  ion-button icon-start block class="login-button" color="dark" (click)="addTrajet(trajet)">Valider</button>
+                            <button ion-button icon-start block class="login-button" color="dark" (click)="addTrajet(trajet)">Valider</button>
                           </div>
                           
          

@@ -17,11 +17,6 @@ declare var window: any;
 */
 @Injectable()
 export class FirebaseserviceProvider {
-
-
-
- 
-
  
   constructor( private camera: Camera) {
       

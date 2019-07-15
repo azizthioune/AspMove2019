@@ -4,7 +4,7 @@
   <ion-header>
       <br>
       
-    <ion-toolbar class="user-profile" *ngFor="let users of userProfilList | async">
+    <ion-toolbar class="user-profile" >
 
       <ion-grid>
         <ion-row>
@@ -13,11 +13,11 @@
                 <img src="../assets/img/avatar.jpeg">
               </div>
           </ion-col>
-          <ion-col padding-top col-8>
+          <ion-col padding-top col-8 *ngIf="prenom">
             <h2 ion-text class="no-margin bold text-white">
-              {{users.prenom}} {{users.nom}}
+                {{prenom}}
             </h2>
-            <span ion-text color="light">{{users.email}}</span>
+            <span ion-text color="light"></span>
           </ion-col>
         </ion-row>
 
@@ -44,21 +44,17 @@
   <ion-content color="primary">
 
       <button menuClose ion-item>
-          <h2>ASPmove Covoiturage</h2>
-          <p>Welcome !</p>
-          <ion-icon item-left name="contact"></ion-icon>
+          <h2>ASPmove Covoiturage </h2>
+          <p>Welcome!</p>
+          <ion-icon item-left name="contacts"></ion-icon>
         </button>
           <button menuClose ion-item>
-              <h2>Boite de réception</h2>
-              <p>Consulter vos messages et notifications</p>
-              <ion-icon item-left name="mail"></ion-icon>
+              <h2>Mes Trajets</h2>
+              <p>Gerez Vos trajets icii!</p>
+              <ion-icon item-left name="car"></ion-icon>
             </button>
-            <button menuClose ion-item>
-                <h2>Mon Panier</h2>
-                <p>Consulter votre panier</p>
-                <ion-icon item-left name="cart"></ion-icon>
-              </button>
-              <button menuClose ion-item>
+           
+              <button ion-item (click)="apropos()">
                   <h2>A propos</h2>
                   <ion-icon item-left name="help-circle"></ion-icon>
                 </button>
