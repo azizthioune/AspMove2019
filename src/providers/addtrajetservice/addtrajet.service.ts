@@ -35,11 +35,9 @@ export class AddtrajetProvider {
     return this.userProfileRef.child('/trajet-list');
 }
 
-getTrajets() {
-  return this.trajetListRef;
-}
 
-getTrajetDetail(trajetId:string): firebase.database.Reference {
+
+getTrajetDetail(trajetId): firebase.database.Reference {
   return this.userProfileRef.child('trajet-list').child(trajetId);
 }
 /*
@@ -52,6 +50,11 @@ getTrajetDetail(trajetId:string): firebase.database.Reference {
     return this.userProfileRef.child('/trajet-list').push(trajet);
 
   }
+
+  removeTrajet(trajetId) {
+    return this.userProfileRef.child('/trajet-list').child(trajetId).remove();
+}
+
 
 
 }

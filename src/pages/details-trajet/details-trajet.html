@@ -19,20 +19,36 @@
             <div>
               <span class="bold"></span>
               <br/>
-              <span ion-text color="dark">{{currentTrajet.prenom}}</span>
+              <ion-icon name="navigate" class="text-green" ></ion-icon>
+              <span ion-text  > Départ: {{currentTrajet.villeD}} quartier de {{currentTrajet.quartierD}}</span>
             </div>
+            <div>
+                <span class="bold"></span>
+                <br/>
+                <ion-icon name="calendar" class="text-green" ></ion-icon>
+                <span ion-text  > Jour Départ: {{currentTrajet.dateD}} à {{currentTrajet.heureD}} </span>
+              </div>
+              <div>
+                  <span class="bold"></span>
+                  <br/>
+                  <ion-icon name="navigate" class="text-green" ></ion-icon>
+                  <span ion-text >Arrivée: {{currentTrajet.villeA}} quartier de {{currentTrajet.quartierA}}</span>
+                </div>
+                <div>
+                    <span class="bold"></span>
+                    <br/>
+                    <ion-icon name="cash" class="text-green" ></ion-icon>
+                    <span ion-text >Prix par personne: {{currentTrajet.prixtrajet}} FCFA </span>
+                  </div>
             <div margin-top>
               <span ion-text color="dark"></span>
               <br/>
               <span ion-text></span>
             </div>
-            <div margin-top>
-              <ion-icon name="checkmark" class="text-green" ></ion-icon>
-              <span ion-text >Free cancellation</span>
-            </div>
+          
           </ion-col>
           <ion-col col-4>
-            <span ion-text>Total with Tax</span>
+            <span ion-text>{{currentTrajet.nbplace}} Place(s) disponible</span>
             <h5 ion-text color="primary" class="bold" no-margin></h5>
           </ion-col>
         </ion-row>
@@ -48,22 +64,21 @@
           <ion-avatar item-start>
             <img src="assets/img/avatar.jpeg">
           </ion-avatar>
-          <h2 ion-text class="text-white bold">João Firmino</h2>
+          <h2 ion-text class="text-white bold">{{currentTrajet.prenom}} {{currentTrajet.nom}}</h2>
           <p ion-text class="text-secondary bold">User</p>
         </ion-item>
       </ion-list>
   
       <div padding>
-        <h5 ion-text color="secondary">Other Guests</h5>
-  
+       
         <ion-item no-padding>
-          <ion-label color="dark" stacked>Type de Voiture:</ion-label>
-          <ion-input type="text" disabled placeholder="" value=""></ion-input>
+          <h3 color="dark" ion-text>Marque de la Voiture:</h3>
+          <h5 ion-text color="secondary"> {{currentTrajet.marque_voiture}} </h5>
         </ion-item>
         <ion-item no-padding>
-          <ion-label color="dark" stacked>Nombre de place:</ion-label>
-          <ion-input disabled type="text" placeholder="Ex. Joe Doe" value=""></ion-input>
-        </ion-item>
+            <h3 color="dark" ion-text>Type de la Voiture:</h3>
+            <h5 ion-text color="secondary"> {{currentTrajet.type_voiture}} </h5>
+          </ion-item>
       </div>
     </div>
   

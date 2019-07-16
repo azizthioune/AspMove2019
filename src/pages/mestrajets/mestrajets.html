@@ -13,7 +13,7 @@
 <ion-content padding padding class="checkout-trip common-bg">
 
 
-    <div class="mycard" *ngFor="let trajet of trajetList | search : terms | sort: {property: column, order: order}" (click)="details(trajetId)">
+    <div class="mycard" *ngFor="let trajet of trajetList | search : terms | sort: {property: column, order: order}" >
         
          <div class="trip-image border-bottom"></div>
          
@@ -65,9 +65,9 @@
                    </ion-col>
                   
            </ion-row>
-           <button (click)="removeItem(article, i)" ion-button item-right icon-only clear color="danger">
-              <ion-icon name="remove-circle" ></ion-icon>
-            </button>
+            <button (click)="removeTrajet(trajet.trajetId)" ion-button item-right icon-only clear color="danger">
+                      <ion-icon name="remove-circle" ></ion-icon>
+                    </button>
          </ion-grid>
        </div>
 

@@ -33,7 +33,7 @@
       <br/>
       <br/>
       <br/>
-  <div class="mycard" *ngFor="let trajet of trajetList | search : terms | sort: {property: column, order: order}" (click)="details(trajetId)">
+  <div class="mycard" *ngFor="let trajet of trajetList | search : terms | sort: {property: column, order: order}" (click)="details(trajet.trajetId)">
  
   <div class="trip-image border-bottom"></div>
   

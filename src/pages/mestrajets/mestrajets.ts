@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController, AlertOptions } from 'ionic-angular';
 import { Trajet } from '../../model/trajet/trajet.model';
 import { AddtrajetProvider } from '../../providers/addtrajetservice/addtrajet.service';
 import { Observable } from "rxjs/Observable";
@@ -22,7 +22,8 @@ import { AjoutTrajetPage } from "../ajout-trajet/ajout-trajet";
 export class MestrajetsPage {
   public trajetList: Array<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private addtrajetProvider: AddtrajetProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private addtrajetProvider: AddtrajetProvider,
+    public toast: ToastController, public alertCtrl : AlertController) {
   }
 
   ionViewDidLoad() {
@@ -50,11 +51,49 @@ export class MestrajetsPage {
       });
     });
 
+    
+
   }
     
 
   ajout(){
     this.navCtrl.push(AjoutTrajetPage);
   }
+
+  removeTrajet(trajetId) {
+    let options : AlertOptions ={
+      title :"Attention !",
+      subTitle: `Etes vous supprimez de vouloir supprimer ?` ,
+      buttons : [
+        {
+          text: "Annuler",
+          role: "cancel"
+        },
+        {
+          text: "Retirer",
+          handler : ()=>{
+           
+            this.addtrajetProvider.removeTrajet(trajetId).then(() => {
+               
+                this.toast.create({
+                  message : "Article retiré du panier!",
+                  duration : 1000
+                }).present();
+              })
+              .catch((error)=>{
+                console.log("error", error);
+              })
+          }
+        }
+      ]
+    }
+    this.alertCtrl.create(options).present();
+    }
+
+
+  
+
+  
+
 
 }
