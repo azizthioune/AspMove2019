@@ -19,24 +19,44 @@ import { MenuPage } from "../menu/menu";
 })
 export class HomePage {
 
-  trajetList: Observable<Trajet[]>
+ // trajetList: Observable<Trajet[]>
+  public trajetList: Array<any>;
 
   descending: boolean = false;
   order: number;
   column: string = 'villeD';
 
   constructor(public navCtrl: NavController, private addtrajetProvider: AddtrajetProvider) {
-    this.trajetList = this.addtrajetProvider.getTrajet()
-    .snapshotChanges()
-    .map(
-    changes => {
-      return changes.map(c => ({
-        key: c.payload.key, ...c.payload.val()
-      }))
-    });
+  
 } 
 ionViewDidLoad() {
- 
+  this.addtrajetProvider.getTrajet().on('value', snapshot => {
+    this.trajetList = [];
+    snapshot.forEach( snap => {
+      this.trajetList.push({
+        trajetId: snap.key,
+        matricule: snap.val().matricule,
+        marque_voiture: snap.val().marque_voiture,
+        type_voiture: snap.val().type_voiture,
+        prenom: snap.val().prenom,
+        nom: snap.val().nom,
+        telephone: snap.val(). telephone,
+        villeD: snap.val().villeD,
+        quartierD: snap.val().quartierD,
+        villeA: snap.val().villeA,
+        quartierA: snap.val().quartierA,
+        dateD: snap.val().dateD,
+        heureD: snap.val().heureD,
+        nbplace: snap.val().nbplace,
+        prixtrajet: snap.val().prixtrajet
+      });
+      return false
+    });
+  });
+
+
+
+  
 }
 
   ajout(){
@@ -47,8 +67,8 @@ ionViewDidLoad() {
     this.navCtrl.setRoot(MenuPage);
   }  
 
-  details(){
-    this.navCtrl.push(DetailsTrajetPage);
+  details(trajetId){
+   this.navCtrl.push(DetailsTrajetPage, {'trajetId': trajetId});
   }
 
   sort(){

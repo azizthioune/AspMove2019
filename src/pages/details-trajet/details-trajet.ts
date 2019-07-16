@@ -18,22 +18,21 @@ import { Observable } from "rxjs/Observable";
 })
 export class DetailsTrajetPage {
 
+  public currentTrajet: any = {};
   trajetList: Observable<Trajet[]>
   constructor(public navCtrl: NavController, public navParams: NavParams,  private addtrajetProvider: AddtrajetProvider) {
 
-    this.trajetList = this.addtrajetProvider.getTrajet()
-    .snapshotChanges()
-    .map(
-    changes => {
-      return changes.map(c => ({
-        key: c.payload.key, ...c.payload.val()
-      }))
-    });
+  
 
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailsTrajetPage');
+    this.addtrajetProvider.getTrajetDetail(this.navParams.get('trajetId'))
+    .on('value', addtrajetSnapshot => {
+      this.currentTrajet = addtrajetSnapshot.val();
+      this.currentTrajet.id = addtrajetSnapshot.key;
+    });
+  }
   }
 
-}
+

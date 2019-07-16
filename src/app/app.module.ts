@@ -33,6 +33,8 @@ import { Camera } from "@ionic-native/camera";
 import { File } from "@ionic-native/file";
 import { FirebaseserviceProvider } from '../providers/firebaseservice/firebaseservice';
 import { AproposPage } from "../pages/apropos/apropos";
+import { MestrajetsPage } from "../pages/mestrajets/mestrajets";
+import { ContactPage } from "../pages/contact/contact";
 
 
 
@@ -47,6 +49,8 @@ import { AproposPage } from "../pages/apropos/apropos";
     AjoutTrajetPage,
     DetailsTrajetPage,
     ProfilPage,
+    MestrajetsPage,
+    ContactPage,
     SearchPipe,
     SortPipe
   ],
@@ -69,7 +73,9 @@ import { AproposPage } from "../pages/apropos/apropos";
     MenuPage,
     AjoutTrajetPage,
     DetailsTrajetPage,
-    ProfilPage
+    ProfilPage,
+    MestrajetsPage,
+    ContactPage
     
   ],
   providers: [

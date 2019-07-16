@@ -13,20 +13,20 @@
 <ion-content padding>
 
 
-  <ion-toolbar class="user-profile" *ngFor="let users of userProfilList | async">
+  <ion-toolbar class="user-profile">
     
           <ion-grid>
             <ion-row>
               <ion-col col-5>
                   <div class="user-avatar">
-                    <img src="../assets/img/avatar.jpeg">
+                    <img src="../assets/img/avatar.png">
                   </div>
               </ion-col>
               <ion-col padding-top col-8>
                 <h2 ion-text class="no-margin bold text-white">
-                 {{users.prenom}} {{users.nom}}
+                 {{prenom}} {{nom}}
                 </h2>
-                <span ion-text color="light">{{users.email}}</span>
+                <span ion-text color="light">{{email}}</span>
               </ion-col>
             </ion-row>
     
@@ -81,7 +81,7 @@
                   <ion-label color="dark" stacked>Nom:</ion-label>
                   <ion-input  type="text" placeholder="nom" [(ngModel)]="nom"></ion-input>
                 </ion-item>
-                <button ion-button block clear (click)="updateProfil()">Save</button>
+                <button ion-button block clear (click)="updateProfil()">Enregistrez</button>
               </div>
             </div>
 

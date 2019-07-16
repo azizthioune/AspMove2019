@@ -11,6 +11,7 @@ import * as firebase from "firebase";
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/Auth';
 import { AproposPage } from "../apropos/apropos";
+import { MestrajetsPage } from "../mestrajets/mestrajets";
 
 
 
@@ -35,25 +36,44 @@ export class MenuPage {
 
   rootPage : any;
   userProfilList: Observable<Account[]>
+  public userProfile:firebase.database.Reference;
+  public userId?: string;
+  public prenom: any;
+  public nom: any;
+  public birth: any;
+  public email: string;
+  public password: any;
+  public cpassword: any;
+  public genre: any;
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public usersserviceProvider:UsersserviceProvider,
     private afAuth: AngularFireAuth, private db: AngularFireDatabase, public toast: ToastController) {
     this.rootPage = HomePage;
 
-    this.userProfilList = this.usersserviceProvider.getAccount()
-    .snapshotChanges()
-    .map(
-    changes => {
-      return changes.map(c => ({
-        key: c.payload.key, ...c.payload.val()
-      }))
+    firebase.auth().onAuthStateChanged( user => {
+      if (user) {
+        
+        this.userProfile = firebase.database().ref(`userProfile/${user.uid}`);
+       
+        this.getUserProfile().on('value', userProfileSnapshot => {
+          // this.userProfile = userProfileSnapshot.val();
+         this.prenom = userProfileSnapshot.val().prenom;
+         this.nom = userProfileSnapshot.val().nom;
+         this.birth = userProfileSnapshot.val().birth;
+         this.email = userProfileSnapshot.val().email;
+         this.genre = userProfileSnapshot.val().genre;
+        
+        })
+      }
     });
 
    
 }
         
-  
+getUserProfile(): firebase.database.Reference {
+  return this.userProfile;
+}
   
 
     
@@ -67,6 +87,10 @@ export class MenuPage {
 
   apropos(){
     this.navCtrl.push(AproposPage);
+  }  
+
+  mestrajets(){
+    this.navCtrl.push(MestrajetsPage);
   }  
 
  

@@ -10,15 +10,20 @@ import { CameraOptions, Camera } from '@ionic-native/camera';
 @Injectable()
 export class UsersserviceProvider {
 
-  public data: any;
-  public fireAuth: any;
+  public data: any;;
   public userProfile: any;
 
-  private userProfilListRef = this.db.list<Account>('userProfile');
+  public fireAuth:firebase.auth.Auth;
+  public userProfileRef:firebase.database.Reference;
+  private currentUser: firebase.User;
+  public user: any;
+ 
   userId: String;
   constructor(public http: Http, private db: AngularFireDatabase) {
     this.fireAuth = firebase.auth();
-    this.userProfile = firebase.database().ref('users');
+  //  this.userProfileRef = firebase.database().ref('/userProfile');
+    this.userProfile = firebase.database().ref('userProfile/');
+    firebase.auth().onAuthStateChanged((user: firebase.User) => this.currentUser = user);
   }
 
  
@@ -34,9 +39,15 @@ export class UsersserviceProvider {
         }
 
 
-        getAccount() {
-           return  this.userProfilListRef;
-        }      
+     
+
+        displayName(): string {
+          if (this.currentUser !== null) {
+            return this.currentUser.displayName;
+          } else {
+            return '';
+          }
+        }
   
 
       

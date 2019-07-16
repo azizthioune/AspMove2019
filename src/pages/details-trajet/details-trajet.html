@@ -10,7 +10,7 @@
   
   <ion-content padding class="checkout-trip common-bg">
     <!--trip information-->
-    <div class="trip-info card round" *ngFor="let trajet of trajetList | async" >
+    <div class="trip-info card round"  >
       <img src="../assets/img/ASPMOVE 1.png">
       <ion-grid padding>
         <ion-row>
@@ -19,7 +19,7 @@
             <div>
               <span class="bold"></span>
               <br/>
-              <span ion-text color="dark">{{ trajet.prenom }}</span>
+              <span ion-text color="dark">{{currentTrajet.prenom}}</span>
             </div>
             <div margin-top>
               <span ion-text color="dark"></span>

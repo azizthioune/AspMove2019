@@ -13,22 +13,44 @@ import { AngularFireAuth } from 'angularfire2/Auth';
 export class AddtrajetProvider {
 
   private trajetListRef = this.db.list<Trajet>('trajet-list');
+  public userProfileRef:firebase.database.Reference;
   userId: String;
+  public id: any;
   
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.afAuth.authState.subscribe(currentUser => {
-      if(currentUser) this.userId = currentUser.uid
-    })
+
+    firebase.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.id = user.uid
+        console.log()
+        this.userProfileRef = firebase.database().ref(`userProfile/${user.uid}`);
+      }
+    });
+
   }
 
 
+
   getTrajet() {
-    return this.trajetListRef;
+    return this.userProfileRef.child('/trajet-list');
 }
 
+getTrajets() {
+  return this.trajetListRef;
+}
+
+getTrajetDetail(trajetId:string): firebase.database.Reference {
+  return this.userProfileRef.child('trajet-list').child(trajetId);
+}
+/*
   addTrajet(trajet: Trajet) {
       trajet.userId = this.userId
       return this.trajetListRef.push(trajet);
+  }
+*/
+  addTrajet(trajet: Trajet): Promise<any> {
+    return this.userProfileRef.child('/trajet-list').push(trajet);
+
   }
 
 
