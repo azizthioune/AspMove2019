@@ -31,7 +31,8 @@ export class SignupPage {
 
   public notePicture: any;
 
- 
+  Picture;
+  base64Image;
   private pictures: any[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -91,6 +92,7 @@ export class SignupPage {
     });
     actionSheet.present();
   }
+  
 
   doSignup(){
     var account = {
@@ -131,6 +133,30 @@ loader.dismiss();
 
   	});
 
+  }
+/*
+  createPost(photoName: string, Picture: string){
+    this.firebaseService.createPost(photoName, this.Picture);
+    this.navCtrl.setRoot(HomePage);
+  }
+  */
+
+  takePicture(){
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then(imageData => {
+       // imageData is a base64 encoded string
+      this.base64Image = "data:image/jpeg;base64," + imageData;
+      //this.Picture is passing the string to our DB
+      this.Picture = imageData;
+    }, error => {
+      console.log("ERROR -> " + JSON.stringify(error));
+    });
   }
 
 }

@@ -12,17 +12,9 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/Auth';
 import { AproposPage } from "../apropos/apropos";
 import { MestrajetsPage } from "../mestrajets/mestrajets";
+import { ContactPage } from "../contact/contact";
 
 
-
-
-
-/**
- * Generated class for the MenuPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -91,6 +83,10 @@ getUserProfile(): firebase.database.Reference {
 
   mestrajets(){
     this.navCtrl.push(MestrajetsPage);
+  }  
+
+  contact(){
+    this.navCtrl.push(ContactPage);
   }  
 
  

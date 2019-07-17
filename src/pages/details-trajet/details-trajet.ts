@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, AlertOptions } from 'ionic-angular';
 import { Trajet } from '../../model/trajet/trajet.model';
 import { AddtrajetProvider } from '../../providers/addtrajetservice/addtrajet.service';
 import { Observable } from "rxjs/Observable";
+import { MenuPage } from "../menu/menu";
 
 /**
  * Generated class for the DetailsTrajetPage page.
@@ -20,7 +21,8 @@ export class DetailsTrajetPage {
 
   public currentTrajet: any = {};
   trajetList: Observable<Trajet[]>
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private addtrajetProvider: AddtrajetProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private addtrajetProvider: AddtrajetProvider,
+    public alertCtrl : AlertController) {
 
   
 
@@ -33,6 +35,20 @@ export class DetailsTrajetPage {
       this.currentTrajet.id = addtrajetSnapshot.key;
     });
   }
+
+  reserver() {
+   
+        let options : AlertOptions = {
+          title :"Félicitation !",
+          message: "Votre Réservation est éffectué! Notre équipe vous contactera pour validation...",
+        };
+        this.alertCtrl.create(options).present();
+        console.log("Réservation effectué!");
+      
+      this.navCtrl.setRoot(MenuPage);
+}
+
+
   }
 
 

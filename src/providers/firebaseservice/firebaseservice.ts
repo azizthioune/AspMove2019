@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import { AngularFireDatabase } from 'angularfire2/database';
 import 'firebase/storage';
 import { CameraOptions, Camera } from '@ionic-native/camera';
+import { AngularFireAuth } from "angularfire2/Auth";
 
 declare var window: any;
 /*
@@ -18,7 +19,19 @@ declare var window: any;
 @Injectable()
 export class FirebaseserviceProvider {
  
-  constructor( private camera: Camera) {
+  public userProfileRef:firebase.database.Reference;
+  public id: any;
+
+  constructor( private camera: Camera,private db: AngularFireDatabase, private afAuth: AngularFireAuth) {
+
+    firebase.auth().onAuthStateChanged( user => {
+      if (user) {
+        this.id = user.uid
+        console.log()
+        this.userProfileRef = firebase.database().ref(`userProfile/${user.uid}`);
+      }
+    });
+
       
     }
 
@@ -26,6 +39,22 @@ export class FirebaseserviceProvider {
 //un autre code differents des autres pour upload image
 
 
+ /*
+
+createPost(pictureName: string, picture: string): Promise<any> {
+  firebase.storage().ref('/pictures/').child(pictureName)
+  .child('plantPicture.png')
+  .putString(picture, 'base64', {contentType: 'image/png'})
+  .then((savedPicture) => {
+    firebase.database().ref(`userProfile/${firebase.auth().currentUser.uid}`).push({
+   picture: savedPicture.downloadURL,
+    name: pictureName,
+   })
+  });
+  return 
+}
+
+ */
 
     uploadFromCamera() {
       const options: CameraOptions = {
@@ -44,7 +73,7 @@ export class FirebaseserviceProvider {
           .then(savedProfilePicture => {
             firebase
               .database()
-              .ref(`profilePicture`)
+              .ref(`userProfile`)
               .set(savedProfilePicture.downloadURL);
               alert('Photo de profil Validé! ');
           });
@@ -74,7 +103,7 @@ export class FirebaseserviceProvider {
           .then(savedProfilePicture => {
             firebase
               .database()
-              .ref(`profilePicture`)
+              .ref(`userProfile`)
               .set(savedProfilePicture.downloadURL);
               alert('Photo de profil Validé! ');
           });
@@ -84,6 +113,6 @@ export class FirebaseserviceProvider {
       });
     }
  
- 
+
 
 }
