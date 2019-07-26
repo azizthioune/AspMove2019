@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertOptions, AlertController, ToastController } from 'ionic-angular';
 import { UsersserviceProvider } from '../../providers/usersservice/usersservice';
 import 'rxjs/Rx';
 import { Observable } from "rxjs/Observable";
 import { SignupPage } from "../signup/signup";
 import * as firebase from "firebase";
+import { LoginPage } from "../login/login";
+import { MethodProvider } from "../../providers/method/method";
 
 /**
  * Generated class for the ProfilPage page.
@@ -32,7 +34,8 @@ export class ProfilPage {
   public genre: any;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private usersserviceProvider:UsersserviceProvider  ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private usersserviceProvider:UsersserviceProvider,
+    public toast: ToastController, public alertCtrl : AlertController,  public method: MethodProvider  ) {
     firebase.auth().onAuthStateChanged( user => {
       if (user) {
         
@@ -59,6 +62,42 @@ export class ProfilPage {
   getUserProfile(): firebase.database.Reference {
     return this.userProfile;
   }
+
+  deleteCompte() {
+    let options : AlertOptions ={
+      title :"Attention !",
+      subTitle: `Etes vous sûr de vouloir supprimer votre Compte?` ,
+      buttons : [
+        {
+          text: "Annuler",
+          role: "cancel"
+        },
+        {
+          text: "Supprimer",
+          handler : ()=>{
+           
+            this.navCtrl.setRoot(LoginPage).then(() => {
+               
+                this.toast.create({
+                  message : "Votre Compte à été supprimer!",
+                  duration : 5000
+                }).present();
+              })
+              .catch((error)=>{
+                console.log("error", error);
+              })
+          }
+        }
+      ]
+    }
+    this.alertCtrl.create(options).present();
+    }
+
+    showImage(picture : any, event) : void {
+      //   event.stopPropagation();
+      //   this.imageViewer.create(picture).present();
+           this.method.showImage(picture, event);
+       }
   
 
 }

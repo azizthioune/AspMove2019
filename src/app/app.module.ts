@@ -35,6 +35,8 @@ import { FirebaseserviceProvider } from '../providers/firebaseservice/firebasese
 import { AproposPage } from "../pages/apropos/apropos";
 import { MestrajetsPage } from "../pages/mestrajets/mestrajets";
 import { ContactPage } from "../pages/contact/contact";
+import { MethodProvider } from '../providers/method/method';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
 
 
 
@@ -60,6 +62,7 @@ import { ContactPage } from "../pages/contact/contact";
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp)
     
   ],
@@ -84,7 +87,8 @@ import { ContactPage } from "../pages/contact/contact";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsersserviceProvider,
     AddtrajetProvider,
-    FirebaseserviceProvider
+    FirebaseserviceProvider,
+    MethodProvider
   ]
 })
 export class AppModule {}

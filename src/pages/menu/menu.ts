@@ -13,6 +13,7 @@ import { AngularFireAuth } from 'angularfire2/Auth';
 import { AproposPage } from "../apropos/apropos";
 import { MestrajetsPage } from "../mestrajets/mestrajets";
 import { ContactPage } from "../contact/contact";
+import { MethodProvider } from "../../providers/method/method";
 
 
 
@@ -40,7 +41,8 @@ export class MenuPage {
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams,public usersserviceProvider:UsersserviceProvider,
-    private afAuth: AngularFireAuth, private db: AngularFireDatabase, public toast: ToastController) {
+    private afAuth: AngularFireAuth, private db: AngularFireDatabase, public toast: ToastController,
+    public method: MethodProvider) {
     this.rootPage = HomePage;
 
     firebase.auth().onAuthStateChanged( user => {
@@ -88,6 +90,12 @@ getUserProfile(): firebase.database.Reference {
   contact(){
     this.navCtrl.push(ContactPage);
   }  
+
+  showImage(picture : any, event) : void {
+    //   event.stopPropagation();
+    //   this.imageViewer.create(picture).present();
+         this.method.showImage(picture, event);
+     }
 
  
 
